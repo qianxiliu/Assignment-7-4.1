@@ -1,0 +1,74 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[2]:
+
+
+import pandas as pd
+pd.read_csv("datasets/gradedata.csv")
+
+
+# In[20]:
+
+
+import pandas as pd
+pd.read_csv("datasets/gradedata.csv")
+
+df = pd.read_csv("datasets/gradedata.csv")
+
+bins = [0, 60, 70, 80, 90, 100]
+
+group_names = ['F', 'D', 'C', 'B', 'A']
+df['letterGrades'] = pd.cut(df['grade'],
+        bins, labels=group_names)
+df.head()
+
+
+# In[37]:
+
+
+import pandas as pd
+pd.read_csv("datasets/gradedata.csv")
+
+df = pd.read_csv("datasets/gradedata.csv")
+
+bins = [0,70,100]
+
+group_names = ['failing','passing']
+df['status'] = pd.cut(df['grade'],
+        bins, labels=group_names)
+
+
+df
+
+
+
+
+# In[38]:
+
+
+df.groupby('status')['hours'].mean()
+
+
+# In[59]:
+
+
+import pandas as pd
+pd.read_csv("datasets/gradedata.csv")
+
+df = pd.read_csv("datasets/gradedata.csv")
+
+bins = [0,70,100]
+
+group_names = ['failing','passing']
+df['status'] = pd.cut(df['grade'],
+        bins, labels=group_names)
+
+df.groupby('status')['hours'].mean()
+gender_hours = df['hours'].groupby(df['gender'])
+gender_hours.mean()
+
+
+
+
+
